@@ -1,10 +1,16 @@
 plugins {
     id 'java'
     id 'maven-publish' // 用于发布到 Maven 仓库
+    id 'signing' // 用于签名发布包
+
 }
 
+signing {
+    useGpgCmd()
+    sign configurations.archivesBaseName // 签名所有发布的构件
+}
 group 'com.dragon.dst4j'
-version '1.0.0_beta'
+version '1.0.0'
 publishing {
     publications {
         mavenJava(MavenPublication) {
