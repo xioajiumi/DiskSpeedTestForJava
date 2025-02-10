@@ -14,7 +14,7 @@ public class Demo {
     public void test() {
         ExecutorService ioPool = null;
         try {
-            ioPool = Executors.newFixedThreadPool(4); // 最好与你测试的config的threadNum一致
+            ioPool = Executors.newFixedThreadPool(5); // 最好与你测试的config的threadNum一致
             DiskTestPlugin plugin = new DiskTestPlugin();
             String filePath1 = "I:";
             // TestConfig config1 = new TestConfig(filePath1, TestConfig.TestType.SEQ_READ);
