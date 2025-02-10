@@ -1,0 +1,33 @@
+plugins {
+    id 'java'
+    id 'maven-publish' // 用于发布到 Maven 仓库
+}
+
+group 'com.dragon.dst4j'
+version '1.0.0_beta'
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java // 使用 Java 项目组件
+        }
+    }
+    repositories {
+        maven {
+            // Maven Central 或 JCenter 的 URL
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2") // Maven Central 示例
+            credentials {
+                username = project.findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
+                password = project.findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
+            }
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+//    implementation 'net.smacke:jaydio:0.1'
+
+}
