@@ -1,6 +1,6 @@
-package com.dragon.dst4j.testConfig;
+package xyz.giantdragon.dst4j.testConfig;
 
-import com.dragon.dst4j.util.CommonUtil;
+import xyz.giantdragon.dst4j.util.CommonUtil;
 
 /**
  * 测试配置类，用于保存测试的配置信息

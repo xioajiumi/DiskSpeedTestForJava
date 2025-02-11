@@ -1,4 +1,4 @@
-package com.dragon.dst4j.result;
+package xyz.giantdragon.dst4j.result;
 
 /**
  * 这个对象用于保存测试的结果，其中ioCount为IO次数，durationSec为测试持续时间（秒/Second）

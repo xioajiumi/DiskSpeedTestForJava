@@ -1,10 +1,10 @@
-package com.dragon.dst4j;
+package xyz.giantdragon.dst4j;
 
-import com.dragon.dst4j.result.TestResult;
-import com.dragon.dst4j.result.WorkerResult;
-import com.dragon.dst4j.testConfig.TestConfig;
-import com.dragon.dst4j.testWorker.AbstractDiskTestWorker;
-import com.dragon.dst4j.util.CommonUtil;
+import xyz.giantdragon.dst4j.result.TestResult;
+import xyz.giantdragon.dst4j.result.WorkerResult;
+import xyz.giantdragon.dst4j.testConfig.TestConfig;
+import xyz.giantdragon.dst4j.testWorker.AbstractDiskTestWorker;
+import xyz.giantdragon.dst4j.util.CommonUtil;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;

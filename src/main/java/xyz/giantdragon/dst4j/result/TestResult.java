@@ -1,4 +1,4 @@
-package com.dragon.dst4j.result;
+package xyz.giantdragon.dst4j.result;
 
 /**
  * 插件测试结果，重点关注吞吐速度和iops

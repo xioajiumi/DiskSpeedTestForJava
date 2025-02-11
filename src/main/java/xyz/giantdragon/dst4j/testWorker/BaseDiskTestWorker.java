@@ -1,9 +1,9 @@
-package com.dragon.dst4j.testWorker;
+package xyz.giantdragon.dst4j.testWorker;
 
-import com.dragon.dst4j.util.CommonUtil;
-import com.dragon.dst4j.DiskTestPlugin;
-import com.dragon.dst4j.testConfig.TestConfig;
-import com.dragon.dst4j.result.WorkerResult;
+import xyz.giantdragon.dst4j.util.CommonUtil;
+import xyz.giantdragon.dst4j.DiskTestPlugin;
+import xyz.giantdragon.dst4j.testConfig.TestConfig;
+import xyz.giantdragon.dst4j.result.WorkerResult;
 
 import java.io.IOException;
 import java.nio.ByteBuffer;

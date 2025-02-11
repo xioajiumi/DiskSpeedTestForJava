@@ -1,8 +1,8 @@
-package com.dragon.dst4j;
+package xyz.giantdragon.dst4j;
 
-import com.dragon.dst4j.result.TestResult;
-import com.dragon.dst4j.testConfig.TestConfig;
-import com.dragon.dst4j.testWorker.DiskTestWorker;
+import xyz.giantdragon.dst4j.result.TestResult;
+import xyz.giantdragon.dst4j.testConfig.TestConfig;
+import xyz.giantdragon.dst4j.testWorker.DiskTestWorker;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;

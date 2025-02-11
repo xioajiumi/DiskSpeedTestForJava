@@ -1,8 +1,8 @@
-package com.dragon.dst4j.util;
+package xyz.giantdragon.dst4j.util;
 
 
-import com.dragon.dst4j.testConfig.TestConfig;
-import com.dragon.dst4j.result.WorkerResult;
+import xyz.giantdragon.dst4j.testConfig.TestConfig;
+import xyz.giantdragon.dst4j.result.WorkerResult;
 
 import java.io.File;
 import java.io.IOException;
