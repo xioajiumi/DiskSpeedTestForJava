@@ -9,7 +9,7 @@ signing {
     useGpgCmd()
     sign configurations.archivesBaseName // 签名所有发布的构件
 }
-group 'com.dragon.dst4j'
+group 'xyz.giantdragon.dst4j'
 version '1.0.0'
 publishing {
     publications {
