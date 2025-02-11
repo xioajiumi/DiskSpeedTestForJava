@@ -1,39 +1,83 @@
 plugins {
     id 'java'
     id 'maven-publish' // 用于发布到 Maven 仓库
-    id 'signing' // 用于签名发布包
-
+    id 'signing'
 }
 
-signing {
-    useGpgCmd()
-    sign configurations.archivesBaseName // 签名所有发布的构件
-}
-group 'xyz.giantdragon.dst4j'
-version '1.0.0'
-publishing {
-    publications {
-        mavenJava(MavenPublication) {
-            from components.java // 使用 Java 项目组件
-        }
-    }
-    repositories {
-        maven {
-            // Maven Central 或 JCenter 的 URL
-            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2") // Maven Central 示例
-            credentials {
-                username = project.findProperty("ossrhUsername") ?: System.getenv("OSSRH_USERNAME")
-                password = project.findProperty("ossrhPassword") ?: System.getenv("OSSRH_PASSWORD")
-            }
-        }
-    }
-}
+
+group = 'xyz.giantdragon.dst4j'
+version = '1.0.0'
+
+//base.archivesName = 'DiskSpeedTestForJava' // 设置构件的基本名称
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
-//    implementation 'net.smacke:jaydio:0.1'
+    // 例如：依赖其他库
+    // implementation 'net.smacke:jaydio:0.1'
+}
 
+signing {
+    useGpgCmd() // 使用命令行 GPG 工具
+    // 使用 task 获取构建产物而不是直接使用 archivesBaseName
+    sign tasks.named('jar').get()  // 这里是关键修改
+}
+
+task signArchives {
+    doLast {
+        signing.sign tasks.named('jar').get() // 使用任务的方式签名
+    }
+}
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'  // 设置 UTF-8 编码
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java // 这里指明是 Java 项目
+
+            pom {
+                name = 'DiskSpeedTestForJava' // 项目名称
+                description = 'Disk Speed Test for Java' // 项目描述
+                url = 'https://github.com/xioajiumi/DiskSpeedTestForJava' // 项目主页链接
+
+                licenses {
+                    license {
+                        name = 'MIT License'
+                        url = 'https://opensource.org/licenses/MIT'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id = 'giantdragon'
+                        name = 'Dragon G'
+                        email = 'hahagjl@163.com'
+                    }
+                }
+                scm {
+                    connection = 'scm:git:git://github.com/xioajiumi/DiskSpeedTestForJava.git'
+                    developerConnection = 'scm:git:ssh://github.com/xioajiumi/DiskSpeedTestForJava.git'
+                    url = 'https://github.com/xioajiumi/DiskSpeedTestForJava'
+                }
+            }
+        }
+    }
+
+    repositories {
+        maven {
+            // 指定 Maven Central 或 GitHub Packages 作为发布目标仓库
+            // 如果你想发布到 Maven Central，需要配置 Sonatype OSS 的仓库地址
+            name = "Sonatype"
+            url = uri("https://oss.sonatype.org/service/local/staging/deploy/maven2/")
+
+            credentials {
+                username = project.findProperty("ossrhUsername")
+                password = project.findProperty("ossrhPassword")
+            }
+        }
+    }
 }
