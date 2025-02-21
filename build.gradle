@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'maven-publish' // 用于发布到 Maven 仓库
     id 'signing'
+
 }
 
 

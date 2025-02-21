@@ -21,8 +21,8 @@ public class TestConfig {
     public static final int BEST_SEQ_BS = 1024 * 1024;
     public static final int BEST_RAND_BS = 4 * 1024;
     public static final int BEST_SEQ_WRITE_TN = 3;
-    public static final int BEST_SEQ_READ_TN = 3;
-    public static final int BEST_RAND_WRITE_TN = 1;
+    public static final int BEST_SEQ_READ_TN = 1;
+    public static final int BEST_RAND_WRITE_TN = 2;
     public static final int BEST_RAND_READ_TN = 1;
     public static final int BEST_RAND_WRITE_BS = 8 * 1024;
 
