@@ -95,7 +95,7 @@ public class BaseDiskTestWorker extends AbstractDiskTestWorker {
 
     @Override
     protected long doSeqRead(TestConfig config, AsynchronousFileChannel channel, ByteBuffer buffer, int bufferSize, int maxIONum, long maxTestDuration, long startTime) throws ExecutionException, InterruptedException {
-        int ioCount = 0;
+        long ioCount = 0;
         while (ioCount < maxIONum && (System.nanoTime() - startTime) < maxTestDuration) {
             final long position = ioCount * bufferSize;
             channel.read(buffer, position).get();
@@ -106,7 +106,7 @@ public class BaseDiskTestWorker extends AbstractDiskTestWorker {
 
     @Override
     protected long doSeqWrite(TestConfig config, AsynchronousFileChannel channel, ByteBuffer buffer, int bufferSize, int maxIONum, long maxTestDuration, long startTime) throws ExecutionException, InterruptedException {
-        int ioCount = 0;
+        long ioCount = 0;
         while (ioCount < maxIONum && (System.nanoTime() - startTime) < maxTestDuration) {
             final long position = ioCount * bufferSize;
             // 清空缓冲区并进行异步写入
@@ -119,10 +119,10 @@ public class BaseDiskTestWorker extends AbstractDiskTestWorker {
 
     @Override
     protected long doRandRead(TestConfig config, AsynchronousFileChannel channel, ByteBuffer buffer, int bufferSize, int maxIONum, long maxTestDuration, long startTime,long[] positionPool) throws ExecutionException, InterruptedException {
-        int ioCount = 0;
+        long ioCount = 0;
         int poolSize = positionPool.length;
         while (ioCount < maxIONum && (System.nanoTime() - startTime) < maxTestDuration) {
-            final long position = positionPool[ioCount % poolSize];
+            final long position = positionPool[(int)(ioCount % poolSize)];
             buffer.clear();
             channel.read(buffer, position).get();
             ioCount++;
@@ -132,10 +132,10 @@ public class BaseDiskTestWorker extends AbstractDiskTestWorker {
 
     @Override
     protected long doRandWrite(TestConfig config, AsynchronousFileChannel channel, ByteBuffer buffer, int bufferSize, int maxIONum, long maxTestDuration, long startTime,long[] positionPool) throws ExecutionException, InterruptedException {
-        int ioCount = 0;
+        long ioCount = 0;
         int poolSize = positionPool.length;
         while (ioCount < maxIONum && (System.nanoTime() - startTime) < maxTestDuration) {
-            final long position = positionPool[ioCount % poolSize];
+            final long position = positionPool[(int)(ioCount % poolSize)];
             buffer.clear();
             channel.write(buffer, position);
             ioCount++;

@@ -125,7 +125,7 @@ public class DiskTestPlugin {
     /**
      * 这个是进行一般化的设置推荐
      */
-    protected static TestConfig setRecommendCommonConfig(TestConfig config) {
+    public static TestConfig setRecommendCommonConfig(TestConfig config) {
         config.setMaxTestDuration(TestConfig.BEST_MAX_TEST_DURATION);
         config.setFileSizeMB(TestConfig.BEST_FILE_SIZE_MB);
         return config;

@@ -16,11 +16,12 @@ public class Demo {
         try {
             ioPool = Executors.newFixedThreadPool(5); // 最好与你测试的config的threadNum一致
             DiskTestPlugin plugin = new DiskTestPlugin();
-            String filePath1 = "I:";
+            String filePath1 = "G:";
             // TestConfig config1 = new TestConfig(filePath1, TestConfig.TestType.SEQ_READ);
-            TestConfig config1 = new TestConfig(filePath1, TestConfig.TestType.RAND_WRITE);
+            TestConfig config1 = new TestConfig(filePath1, TestConfig.TestType.SEQ_WRITE);
             DiskTestPlugin.setRecommendCommonConfig(config1);
             DiskTestPlugin.setRecommendRWConfig(config1);
+            config1.setFileSizeMB(1024*2);
             TestResult testResult1 = plugin.runTest(config1, ioPool, DiskTestWorker.class);
             System.out.println("\u001B[34m" + "====IOPS:===="+testResult1.getiops() + "\u001B[0m");
             System.out.println("\u001B[34m" + "====Speed:===="+testResult1.getdataThroughputMBps() + "\u001B[0m");
